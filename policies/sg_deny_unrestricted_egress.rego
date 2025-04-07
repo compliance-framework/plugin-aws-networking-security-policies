@@ -1,8 +1,8 @@
-package compliance_framework.template.aws._deny_unrestricted_egress
+package compliance_framework.deny_unrestricted_egress
 
-violation[{
-  "title": "Egress rules should not allow unrestricted outbound traffic",
-  "description": "Outbound traffic should be limited to prevent data exfiltration.",
-}] if {
+violation[{}] if {
   input.IpPermissionsEgress[_].IpRanges[_].CidrIp == "0.0.0.0/0"
 }
+
+title := "Egress should be restricted"
+description := "Egress rules should be limited to trusted CIDRs and not opened to the wider internet"

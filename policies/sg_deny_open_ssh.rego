@@ -1,9 +1,9 @@
-package compliance_framework.template.aws._deny_open_ssh
+package compliance_framework.deny_open_ssh
 
-violation[{
-  "title": "SSH (port 22) should not be open to the world",
-  "description": "Security group allows SSH access (port 22) from 0.0.0.0/0, which poses a security risk.",
-}] if {
+violation[{}] if {
   input.IpPermissions[_].IpRanges[_].CidrIp == "0.0.0.0/0"
   input.IpPermissions[_].ToPort == 22
 }
+
+title := "SSH (port 22) should be restricted"
+description := "SSH access should not be open to the wider internet, and should be limited to trusted sources"
