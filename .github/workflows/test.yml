@@ -17,7 +17,7 @@ jobs:
           version: 1.6.0
 
       - name: Run OPA Tests
-        run: make test
+        run: opa test policies
 
       - name: Run OPA Check
-        run: make validate
+        run: opa check policies

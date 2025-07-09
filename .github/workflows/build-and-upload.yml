@@ -15,7 +15,9 @@ jobs:
         with:
           version: latest
       - name: Run OPA Build
-        run: make build
+        run: |
+          mkdir -p dist/
+          opa build -b policies -o dist/bundle.tar.gz
       - name: Bundle
         uses: softprops/action-gh-release@v2
         with:
